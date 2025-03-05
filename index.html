@@ -41,20 +41,6 @@
         button:hover {
             background-color: #45a049;
         }
-        .skip-button {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-            background-color: #f44336;
-            color: white;
-            border: none;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-        .skip-button:hover {
-            background-color: #e53935;
-        }
     </style>
 </head>
 <body>
@@ -124,24 +110,25 @@
         </div>
 
         <button id="agreeButton">同意する</button>
-        <button id="skipButton" class="skip-button" style="display:none;">利用規約をスキップ</button>
     </div>
 
     <script>
         // 同意したかをローカルストレージで確認
         if (localStorage.getItem("agreed") === "true") {
-            // 同意済みなら規約画面をスキップ
-            document.getElementById("terms").style.display = "none";
+            // 同意済みなら即座にリダイレクト
+            window.location.href = "https://x.gd/Xzm4R";
+        } else {
+            // 同意していなければ、利用規約を表示
+            document.getElementById("terms").style.display = "block";
         }
 
         // 同意ボタンをクリックしたときの処理
         document.getElementById("agreeButton").onclick = function() {
             localStorage.setItem("agreed", "true");
-            window.location.href = "https://x.gd/Xzm4R";
+            window.location.href = "https://x.gd/Xzm4R"; // 同意後のリダイレクト
         };
-
     </script>
-<p>v1.2</p>
+
+    <p>v1.3.1</p>
 </body>
 </html>
-
